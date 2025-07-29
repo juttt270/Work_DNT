@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <!-- bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+    <!-- font-awesome  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- font font-family -->
+       <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Task</title>
+</head>
+<body>
+<div id="loader">
+  <div class="loader-content">
+    <img src="img/img2.png" alt="Scenery Background" class="loader-bg">
+    <h1 class="loader-text">Welcome to Summer</h1>
+    <p class="loader-sub">Loading your sunny experience...</p>
+  </div>
+</div>
+ <nav class="navbar navbar-expand-lg">
+  <div class="container-fluid  flexd">
+    <a class="navbar-brand text-light logo" href="#">LOGO</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#" id="home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Explore</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Blog</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact</a>
+        </li>
+    </div>
+  </div>
+</nav>
+<div class="main">
+    <div class="social">
+        <a href=""><i class="fa-brands fa-facebook-f"></i></a>
+        <a href=""><i class="fa-brands fa-instagram"></i></a>
+        <a href=""><i class="fa-brands fa-twitter"></i></a>
+    </div>
+    <div class="content">
+<h1>Summer</h1>
+<span>season</span>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, porro alias dolore voluptatibus laudantium ipsam, impedit explicabo quia nostrum sequiuygh, consectetur adipisicing elit.</p>
+<button>Read More <i class="fa-solid fa-arrow-right"></i></button>
+    </div>
+</div>
+<div class="shortimg">
+    <img id="img2" src="img/img2.png" alt="scene">
+    <img id="img1" src="img/img1.jpg" alt="scene">
+    <img id="img3" src="img/img3.png" alt="scene">
+    <img id="img4" src="img/img4.png" alt="scene">
+    <img id="img4" src="img/img5.png" alt="scene">
+    <img id="img4" src="img/img6.png" alt="scene">
+    <img id="img4" src="img/img7.png" alt="scene">
+    <img id="img4" src="img/img8.png" alt="scene">
+    <img id="img4" src="img/img9.png" alt="scene">
+    <img id="img4" src="img/img10.png" alt="scene">
+</div>
+<div class="sign">
+    <span>Draggable</span>
+    <p>Image Slider</p>
+</div>
+<div class="season">
+    <h2>Seasons of the year</h2>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor aut unde dolorem dicta tempora numquam possimus excepturi esse, alias amet perspiciatis eum fugit cupiditate nulla totam dolores, ipsa, repudiandae iure nesciunt suscipit.</p>
+</div>
+    <script>
+  const images = document.querySelectorAll('.shortimg img');
+  const mainElement = document.querySelector('.main');
+  images.forEach(img => {
+    img.addEventListener('mouseover', function() {
+      const imgSrc = img.getAttribute('src');
+      mainElement.style.setProperty('--background-image', `url(${imgSrc})`);
+    });
+  });
+ window.addEventListener("load", function () {
+    const loader = document.getElementById("loader");
+    loader.classList.add("hidden");
+  });
+</script>
+</body>
+</html>
