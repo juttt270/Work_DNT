@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <!-- chart.js  -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <title>Sales Apportunities Dashboard</title>
+</head>
+
+<body>
+  <!-- navbar  -->
+  <nav class="navbar navbar-expand-lg navbar-dark rounded">
+    <div class="container-fluid ">
+      <a class="navbar-brand" href="index.html">
+        <!-- <img width="30%" src="images/logo.png" alt=""> -->
+         PLACTO
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse " id="navbarSupportedContent">
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-light " type="submit">Search</button>
+        </form>
+        <ul class="navbar-nav align-items-center">
+          <!-- Notifications Dropdown -->
+          <li class="nav-item dropdown me-3 ">
+            <a class="nav-link dropdown-toggle text-light" href="#" id="notifDropdown" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              🔔 Notifications
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="notifDropdown">
+              <li><a class="dropdown-item" href="#">New order placed</a></li>
+              <li><a class="dropdown-item" href="#">Customer feedback</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">View all</a></li>
+            </ul>
+          </li>
+          <!-- Profile Dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-light" href="#" id="profileDropdown" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              👤 Profile
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+              <li><a class="dropdown-item" href="#">My Account</a></li>
+              <li><a class="dropdown-item" href="#">Settings</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">Logout</a></li>
+            </ul>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="main">
+    <div class="dashboard-row">
+      <!-- Opportunities Created -->
+      <div class="card">
+        <h4 class="text-start">Opportunities Created 🚀</h4>
+        <small class="text-start">Current month</small>
+        <div class="user-section">
+          <div class="user">
+            <img src="images/img1.png" alt="">
+            <span>David Howard</span>
+            <div class="score">147</div>
+            <span class="rankspan">1</span>
+          </div>
+          <div class="user">
+            <img src="images/img2.png" alt="">
+            <span>Curtis Miller</span>
+            <div class="score">145</div>
+            <span class="rankspan" style="background-color: silver;">2</span>
+          </div>
+          <div class="user">
+            <img src="images/img3.png" alt="">
+            <span>Oliver Stone</span>
+            <div class="score">140</div>
+            <span class="rankspan" style="background-color:#CD7F32;">3</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Value of Opps Created -->
+      <div class="card">
+        <h4>Value of Opps. Created</h4>
+        <small>Current month</small>
+        <div class="chart-container">
+          <canvas id="valueChart"></canvas>
+          <div class="center-value" style="color: #FFA726;">1.54k</div>
+        </div>
+        <div class="text-bottom">2k</div>
+      </div>
+
+      <!-- Opp Accepted -->
+      <div class="card">
+        <h4>Opp. Accepted</h4>
+        <small>Current month</small>
+        <div class="chart-container">
+          <canvas id="acceptChart"></canvas>
+          <div class="center-value" style="color: #00e676;">1.31k</div>
+        </div>
+        <div class="text-bottom">1.5k</div>
+      </div>
+
+      <!-- Acceptance Rate -->
+      <div class="card">
+        <h4>Acceptance Rate</h4>
+        <small>Current month</small>
+        <div class="highlight">85%</div>
+      </div>
+
+      <!-- Won Opportunities -->
+      <div class="card">
+        <h4>Won Opportunities</h4>
+        <small>Current month</small>
+        <div class="big-text">$ 3.45M</div>
+      </div>
+    </div>
+    <!-- Sales Performance Table Row -->
+    <div class="dashboard-row">
+      <!-- Opportunities by Sales Rep -->
+      <div class="card" style="flex: 2; padding: 0;">
+        <div style="padding: 20px;text-align: start;">
+          <h4>Opportunities by Sales Rep</h4>
+          <small>Current month</small>
+        </div>
+        <div>
+          <table style="width: 100%; border-collapse: collapse; color: #fff;">
+            <thead>
+              <tr style="background-color: #122143;">
+                <th>#</th>
+                <th>Employee</th>
+                <th>Opps. Created</th>
+                <th>Opps. Accepted</th>
+                <th>Acceptance Rate</th>
+                <th>Won Opp.</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>David Howard 🏆</td>
+                <td>147</td>
+                <td>132</td>
+                <td><span class="bar green">90%</span></td>
+                <td>$420,016</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Tyler Bryant 🎯</td>
+                <td>116</td>
+                <td>104</td>
+                <td><span class="bar green">90%</span></td>
+                <td>$218,644</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Oliver Stone 🥉</td>
+                <td>140</td>
+                <td>124</td>
+                <td><span class="bar green">89%</span></td>
+                <td>$220,040</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Mike Novak</td>
+                <td>122</td>
+                <td>108</td>
+                <td><span class="bar green">89%</span></td>
+                <td>$374,072</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>Stephen Flores ⭐</td>
+                <td>135</td>
+                <td>118</td>
+                <td><span class="bar green">87%</span></td>
+                <td>$373,853</td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>Karen Castillo 🥇</td>
+                <td>120</td>
+                <td>103</td>
+                <td><span class="bar green">86%</span></td>
+                <td>$265,935</td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td>Olivia Smith</td>
+                <td>128</td>
+                <td>109</td>
+                <td><span class="bar green">85%</span></td>
+                <td>$287,448</td>
+              </tr>
+              <tr>
+                <td>8</td>
+                <td>Curtis Miller</td>
+                <td>145</td>
+                <td>121</td>
+                <td><span class="bar orange">83%</span></td>
+                <td>$411,587</td>
+              </tr>
+              <tr style="border: none;">
+      <td style="border-bottom-left-radius: 8px;">9</td>
+                <td>Kyle Daniels 🛡️</td>
+                <td>120</td>
+                <td>98</td>
+                <td><span class="bar orange">82%</span></td>
+                <td style="border-bottom-right-radius: 8px;">$276,705</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- Most Valuable Opportunities -->
+      <div class="card" style="flex: 1; padding: 0;">
+        <div style="padding: 20px;text-align: start;">
+          <h4>Most Valuable Opportunities</h4>
+          <small>Current month</small>
+        </div>
+        <div style="overflow-x: auto;">
+          <table style="width: 100%; border-collapse: collapse; color: #fff;">
+            <thead>
+              <tr style="background-color: #122143;">
+                <th>#</th>
+                <th>Name</th>
+                <th>Amount</th>
+                <th>Stage</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Taylor LLC</td>
+                <td>$73,186</td>
+                <td>Closed Won</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Hernandez Inc</td>
+                <td>$53,178</td>
+                <td>Qualification</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Lee PLC</td>
+                <td>$47,334</td>
+                <td>Commit/Waiting</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Edwards Group</td>
+                <td>$46,528</td>
+                <td>Qualification</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>Sims, Smith & Jones</td>
+                <td>$45,217</td>
+                <td>Negotiation</td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>Garcia, White & Francis</td>
+                <td>$44,812</td>
+                <td>Negotiation</td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td>Mclaughlin, Franco</td>
+                <td>$43,475</td>
+                <td>Closed Won</td>
+              </tr>
+              <tr>
+                <td>8</td>
+                <td>Dillon-Garcia</td>
+                <td>$42,925</td>
+                <td>Meeting Booked</td>
+              </tr>
+              <tr>
+                <td>9</td>
+                <td>Moreno, Johnson</td>
+                <td>$40,304</td>
+                <td>Commit/Waiting</td>
+              </tr>
+              <tr>
+                <td>10</td>
+                <td>Spencer PLC</td>
+                <td>$38,878</td>
+                <td>Closed Won</td>
+              </tr>
+              <tr>
+                <td>11</td>
+                <td>Spencer PLC</td>
+                <td>$38,878</td>
+                <td>Closed Won</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+</body>
+</html>
