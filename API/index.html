@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fetch Data By API</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Segoe UI', sans-serif;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .container {
+      margin-top: 50px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #343a40;
+    }
+
+    .card {
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .table thead th {
+      background-color: #343a40;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+
+    .spinner-border {
+      display: block;
+      margin: 30px auto;
+    }
+
+    .alert {
+      width: fit-content;
+      margin: 20px auto;
+    }
+
+    #backToTop {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: none;
+      z-index: 99;
+    }
+
+    .dark-mode {
+      background-color: #121212;
+      color: #f1f1f1;
+    }
+    .dark-mode h1 {
+      color: #f1f1f1;
+    }
+
+    .dark-mode .table {
+      background-color: #1e1e1e;
+      color: #f1f1f1;
+    }
+
+    .dark-mode .table thead th {
+      background-color: #333;
+    }
+    .dark-mode .table tbody td {
+     color: white;
+    }
+
+    .dark-mode .card {
+        color: white;
+      background-color: #1e1e1e;
+    }
+
+    .dark-toggle {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .table-responsive {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container position-relative">
+  <button class="btn btn-sm btn-dark dark-toggle" onclick="toggleDarkMode()" id="themebtn">🌙 Toggle Dark Mode</button>
+  <h1 id="heading">📊 Posts Data from API</h1>
+
+  <div class="card">
+    <div class="card-body">
+      <input type="text" id="search" class="form-control mb-3" placeholder="🔍 Search by title or body...">
+
+      <div id="loader" class="text-center">
+        <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+
+      <div id="error" class="alert alert-danger d-none" role="alert">
+        ❌ Failed to fetch data. Please check your JSON file or path.
+      </div>
+
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped text-center align-middle">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>🔰 Title</th>
+              <th>💌 Body</th>
+              <th>⚛ Tags</th>
+              <th>❤ Likes</th>
+              <th>👎 Dislikes</th>
+              <th>👁 Views</th>
+              <th>🙎‍♀️ User ID</th>
+            </tr>
+          </thead>
+          <tbody id="output">
+            <!-- Data will be inserted here -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Back to Top Button -->
+<button id="backToTop" class="btn btn-primary btn-sm" onclick="window.scrollTo({ top: 0, behavior: 'smooth' });">⬆️ Top</button>
+
+<script>
+  let allData = [];
+
+  fetch('data.json')
+    .then(res => res.json())
+    .then(data => {
+      allData = data;
+      document.getElementById('loader').style.display = 'none';
+      renderTable(allData);
+    })
+    .catch(error => {
+      document.getElementById('loader').style.display = 'none';
+      document.getElementById('error').classList.remove('d-none');
+      console.error("Error fetching data:", error);
+    });
+
+  function renderTable(data) {
+    const output = document.getElementById('output');
+    output.innerHTML = "";
+
+    data.forEach(item => {
+      const row = `
+        <tr>
+          <td>${item.id}</td>
+          <td>${item.title}</td>
+          <td>${item.body}</td>
+          <td>${item.tags.join(', ')}</td>
+          <td>${item.reactions.likes}</td>
+          <td>${item.reactions.dislikes}</td>
+          <td>${item.views}</td>
+          <td>${item.userId}</td>
+        </tr>
+      `;
+      output.innerHTML += row;
+    });
+  }
+
+  // Dark mode toggle
+     function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+
+      const btn = document.getElementById("themebtn");
+
+      if (document.body.classList.contains("dark-mode")) {
+        btn.textContent = "🌙 Toggle Light Mode";
+      } else {
+        btn.textContent = "🌙 Toggle Dark Mode";
+      }
+    }
+  
+
+  // Live Search
+  document.getElementById('search').addEventListener('keyup', function () {
+    const query = this.value.toLowerCase();
+    const filtered = allData.filter(item =>
+      item.title.toLowerCase().includes(query) ||
+      item.body.toLowerCase().includes(query)
+    );
+    renderTable(filtered);
+  });
+
+  // Back to top button show/hide
+  window.onscroll = function () {
+    const btn = document.getElementById('backToTop');
+    if (document.documentElement.scrollTop > 300) {
+      btn.style.display = 'block';
+    } else {
+      btn.style.display = 'none';
+    }
+  };
+</script>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
