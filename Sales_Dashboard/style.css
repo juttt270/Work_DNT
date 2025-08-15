@@ -1,0 +1,198 @@
+        :root[data-theme='light'] {
+            --bg: #e9f5ff;
+            --text: #212529;
+            --card-bg: #fff;
+            --sidebar-bg: #007bff;
+            --sidebar-hover: #0056b3;
+            --navbar-bg: #ffffff;
+        }
+
+        :root[data-theme='dark'] {
+            --bg: #121212;
+            --text: #ffffff;
+            --card-bg: #1e1e1e;
+            --sidebar-bg: #0d6efd;
+            --sidebar-hover: #004085;
+            --navbar-bg: #1f1f1f;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            height: 100vh;
+            background-color: var(--sidebar-bg);
+            color: white;
+            overflow-x: hidden;
+            transition: width 0.3s;
+            z-index: 1030;
+        }
+
+        .sidebar.collapsed {
+            width: 70px;
+        }
+
+        .sidebar a {
+            display: flex;
+            align-items: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            color: white;
+            transition: background 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: var(--sidebar-hover);
+        }
+
+        .sidebar i {
+            min-width: 20px;
+            text-align: center;
+        }
+
+        .sidebar-text {
+            margin-left: 10px;
+            white-space: nowrap;
+            transition: opacity 0.2s ease-in-out;
+        }
+
+        .sidebar.collapsed .sidebar-text {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+            padding-top: 0;
+            transition: margin-left 0.3s;
+        }
+
+        .content.full-width {
+            margin-left: 70px;
+        }
+
+        .toggle-sidebar-btn,
+        .toggle-theme-btn {
+            position: fixed;
+            top: 10px;
+            z-index: 1050;
+        }
+
+        .toggle-sidebar-btn {
+            left: 10px;
+        }
+
+        .toggle-theme-btn {
+            right: 10px;
+        }
+
+        .card {
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s;
+            background-color: var(--card-bg);
+        }
+
+        .card:hover {
+            transform: scale(1.03);
+        }
+
+        .card-title {
+            font-weight: 600;
+        }
+
+        .navbar {
+            background-color: var(--navbar-bg) !important;
+            transition: background 0.3s;
+        }
+
+        .detail-section {
+            display: none;
+            width: 60vw;
+margin: 0 auto;
+            margin-top: 30px;
+            animation: fadeIn 0.5s ease-in-out;
+            padding: 25px;
+            border-radius: 12px;
+            color: #fff;
+            transition: transform 0.2s ease;
+        }
+
+        .detail-section:hover {
+            transform: scale(1.02);
+        }
+
+        .orders-details {
+            background: linear-gradient(to right, #007bff, #3399ff);
+        }
+
+        .customers-details {
+            background: linear-gradient(to right, #28a745, #5cd65c);
+        }
+
+        .products-details {
+            background: linear-gradient(to right, #ffc107, #ffdb4d);
+        }
+
+        .sales-details {
+            background: linear-gradient(to right, #17a2b8, #5bc0de);
+        }
+
+        .chart-container {
+            position: relative;
+            height: 200px;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 15px;
+            color: white !important;
+        }
+
+        table th,
+        table td {
+            padding: 8px;
+            background-color: rgba(255, 255, 255, 0.1) !important;
+            color: white !important;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .uniform-card {
+            background-color: var(--card-bg);
+            min-height: 320px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 1.5rem;
+            transition: transform 0.2s;
+        }
+
+        .uniform-card:hover {
+            transform: scale(1.01);
+        }
+
+        .uniform-card canvas {
+            max-height: 200px;
+        }
