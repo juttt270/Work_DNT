@@ -1,0 +1,28 @@
+nav {
+  background-color: rgba(128, 128, 128, 0.849);
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 5;
+}
+.logo {
+  font-weight: 1000;
+  letter-spacing: 1px;
+  margin-left: 175px !important;
+}
+
+a {
+  color: white !important;
+}
+a:hover {
+  color: rgba(255, 255, 255, 0.527) !important;
+}
+ul {
+  margin-left: 50%;
+}
+footer {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding: 1.5rem;
+      margin-top: 3rem;
+    }

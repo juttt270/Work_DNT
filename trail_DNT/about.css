@@ -1,0 +1,88 @@
+ body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(#f9f9f9, #fff);
+      color: #333;
+    }
+
+    .hero {
+      background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e') center/cover no-repeat;
+      height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      position: relative;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      animation: fadeDown 1.5s ease-in-out;
+    }
+
+    @keyframes fadeDown {
+      from {opacity: 0; transform: translateY(-40px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      width: 80px;
+      height: 4px;
+      background: gray;
+      display: block;
+      margin: 0.5rem auto;
+    }
+
+    .about-content {
+      padding: 3rem 1rem;
+      background: #fefefe;
+    }
+
+    .about-img {
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      transition: transform 0.4s;
+    }
+
+    .about-img:hover {
+      transform: scale(1.05);
+    }
+
+    .stats {
+      background: gray;
+      color: #fff;
+      padding: 3rem 1rem;
+      text-align: center;
+    }
+
+    .stats .stat {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    .carousel-item img {
+      max-height: 300px;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    .testimonial {
+      background: #f4f4f4;
+      padding: 3rem 1rem;
+      text-align: center;
+    }
+
+    .testimonial blockquote {
+      font-style: italic;
+      font-size: 1.2rem;
+    }
