@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- font awwesome  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+        integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- css linking  -->
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="blog.css">
+    <title>Blog - OptifiLink</title>
+</head>
+
+<body>
+    <!-- hero section  -->
+    <div class=" hero">
+        <img width="100%" height="100%" src="blog-images/hero.png" alt="">
+        <div class="blog-hero-box">Blogs</div>
+    </div>
+
+    <!-- below Content  -->
+    <div class="container blog-main-div">
+
+        <!-- Navigation Bar -->
+        <div class="blog-nav">
+            <div class="blog-categories">
+                <span class="active" data-category="all">All Posts</span>
+                <span data-category="technology">Technology</span>
+                <span data-category="general">General</span>
+            </div>
+            <div class="search-area">
+                <i class="fas fa-search search-icon" id="searchIcon"></i>
+                <div class="search-box" id="searchBox">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search..." />
+                    <span class="close-icon" id="closeIcon">&times;</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cards Section -->
+        <div class="card-container" id="cardContainer">
+            <!-- Cards inserted via JS -->
+        </div>
+
+    </div>
+
+    <script>
+        const searchIcon = document.getElementById('searchIcon');
+        const searchBox = document.getElementById('searchBox');
+        const closeIcon = document.getElementById('closeIcon');
+        const categoryLinks = document.querySelectorAll('.blog-categories span');
+        const cardContainer = document.getElementById('cardContainer');
+
+        // Dummy posts
+        const posts = [
+            { time: 'July 22', category: 'technology', title: 'Wired for Speed: How OptifiLink AOC, DAC power cables...', tag: 'Technology', desc: 'Reliable cabling becomes the backbone of modern high-speed networks.', img: 'blog-images/blog1.png' },
+            { time: 'July 23', category: 'general', title: 'Understanding Fiber Optics: Backbone of Internet Speed', tag: 'General', desc: 'Fiber optics offer blazing-fast speed and minimal latency in modern comms.', img: 'blog-images/blog2.png' },
+            { time: 'July 24', category: 'technology', title: 'Inside Data Centers: What Powers the Cloud?', tag: 'Technology', desc: 'Massive servers, advanced cooling, and smart wiring define today’s cloud.', img: 'blog-images/blog3.png' },
+            { time: 'July 25', category: 'technology', title: 'Passive vs Active Cables: What’s the Real Difference?', tag: 'Technology', desc: 'Learn when to choose active over passive DAC and AOC cables.', img: 'blog-images/blog4.png' },
+            { time: 'July 26', category: 'technology', title: 'Top 5 Trends in Network Infrastructure 2025', tag: 'Technology', desc: 'AI-powered routing and greener cabling are shaping the next-gen networks.', img: 'blog-images/blog5.png' },
+            { time: 'July 27', category: 'general', title: 'Why Enterprise Networks Need High-Performance Cabling', tag: 'General', desc: 'Downtime is expensive—good cabling helps avoid it.', img: 'blog-images/blog6.png' },
+            { time: 'July 28', category: 'technology', title: 'Data Transfer 101: Speeds, Cables, and Compatibility', tag: 'Technology', desc: 'Choosing the right cable boosts transfer efficiency significantly.', img: 'blog-images/blog7.png' },
+            { time: 'July 29', category: 'technology', title: 'OptifiLink Solutions for 5G Networks', tag: 'Technology', desc: 'Empowering the 5G revolution through cutting-edge cable tech.', img: 'blog-images/blog8.png' },
+            { time: 'July 30', category: 'general', title: 'The Future of Wired Connectivity in IoT', tag: 'General', desc: 'Low-latency and reliability still keep wires relevant in IoT.', img: 'blog-images/blog9.png' },
+            { time: 'Aug 1', category: 'technology', title: 'Cable Management in Data Centers: Best Practices', tag: 'Technology', desc: 'A clean setup improves cooling, airflow, and troubleshooting.', img: 'blog-images/blog10.png' },
+            { time: 'Aug 2', category: 'technology', title: 'HDMI, DisplayPort, and Beyond: Video Cable Tech', tag: 'Technology', desc: 'What’s the best cable for your ultra-high-resolution displays?', img: 'blog-images/blog11.png' },
+            { time: 'Aug 3', category: 'general', title: 'The Role of Cabling in Edge Computing', tag: 'General', desc: 'Fast, short-distance connections power real-time edge processing.', img: 'blog-images/blog12.png' },
+            { time: 'Aug 4', category: 'technology', title: 'Is Copper Dead? The Debate on Fiber vs Copper', tag: 'Technology', desc: 'Fiber offers more bandwidth, but copper still holds ground.', img: 'blog-images/blog13.png' },
+            { time: 'Aug 5', category: 'technology', title: 'Network Security Starts with the Physical Layer', tag: 'Technology', desc: 'Locked cabinets and secure cables are just the beginning.', img: 'blog-images/blog14.png' },
+            { time: 'Aug 6', category: 'technology', title: 'Rack Cabling Done Right: OptifiLink’s Latest Toolkit', tag: 'Technology', desc: 'Organized racks improve performance and reduce maintenance.', img: 'blog-images/blog15.png' },
+            { time: 'Aug 7', category: 'technology', title: 'Decoding QSFP and SFP Modules', tag: 'Technology', desc: 'Learn how transceivers affect your cabling choices.', img: 'blog-images/blog16.png' },
+            { time: 'Aug 8', category: 'technology', title: 'Low Power, High Speed: Modern Cabling Trade-offs', tag: 'Technology', desc: 'Balancing power consumption and performance is key.', img: 'blog-images/blog17.png' },
+            { time: 'Aug 9', category: 'general', title: 'Choosing the Right Cable for Your Home Office', tag: 'General', desc: 'Avoid network drops and lag by using certified quality cables.', img: 'blog-images/blog18.png' },
+            { time: 'Aug 10', category: 'technology', title: 'All About Plenum-Rated Cables Optifilink', tag: 'Technology', desc: 'Safety regulations demand certified cabling in certain spaces.', img: 'blog-images/blog19.png' },
+            { time: 'Aug 11', category: 'technology', title: 'Cable Certification: Why It Matters Optifilink', tag: 'Technology', desc: 'Avoid counterfeits and ensure performance with tested cables.', img: 'blog-images/blog20.png' },
+            { time: 'Aug 12', category: 'general', title: 'Upgrade Your Network Without Replacing Everything', tag: 'General', desc: 'How to make the most of existing cables during network upgrades.', img: 'blog-images/blog21.png' },
+            { time: 'Aug 13', category: 'technology', title: 'How AOC and DAC Cables Save Space in Racks', tag: 'Technology', desc: 'Compact, efficient, and high-performance cables are the new normal.', img: 'blog-images/blog22.png' },
+            { time: 'Aug 13', category: 'general', title: 'Why Enterprise Networks Need High-Performance Cabling', tag: 'General', desc: 'Downtime is expensive—good cabling helps avoid it.', img: 'blog-images/blog6.png' },
+            { time: 'Aug 14', category: 'technology', title: 'All About Plenum-Rated Cables Optifilink', tag: 'Technology', desc: 'Safety regulations demand certified cabling in certain spaces.', img: 'blog-images/blog19.png' }
+        ];
+
+        function renderCards(category) {
+            cardContainer.innerHTML = '';
+            const filtered = category === 'all' ? posts : posts.filter(p => p.category === category);
+            if (filtered.length === 0) {
+                cardContainer.innerHTML = '<p>No posts found.</p>';
+                return;
+            }
+            filtered.forEach(post => {
+                const card = document.createElement('div');
+                card.classList.add('card');
+                card.innerHTML = `
+           <div class="card-blog">
+    <img src="${post.img}" />
+    <div class="card-body">
+      <div class="card-meta">
+        <span>Jul 22</span>
+        <span><i class="fas fa-ellipsis-v"></i></span>
+      </div>
+      <div class="tag">${post.category}</div>
+      <div class="title">${post.title}</div>
+      <div class="desc">
+        ${post.desc}
+      </div>
+    </div>
+    <div class="card-footer">
+      <div><i class="fas fa-eye"></i> 7</div>
+      <div class="interactions">
+        <i class="far fa-comment"></i>
+        <i class="far fa-heart"></i>
+      </div>
+    </div>
+  </div>
+        `;
+                cardContainer.appendChild(card);
+            });
+        }
+
+        // Initial load
+        renderCards('all');
+
+        // Category click logic
+        categoryLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.blog-categories .active').classList.remove('active');
+                link.classList.add('active');
+                const category = link.getAttribute('data-category');
+                renderCards(category);
+            });
+        });
+
+        // Search toggle
+        searchIcon.addEventListener('click', () => {
+            searchIcon.style.display = 'none';
+            searchBox.style.display = 'flex';
+        });
+
+        closeIcon.addEventListener('click', () => {
+            searchBox.style.display = 'none';
+            searchIcon.style.display = 'inline-block';
+        });
+    </script>
+    <!-- bootstrap  -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+        </script>
+</body>
+
+</html>

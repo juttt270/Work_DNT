@@ -1,0 +1,245 @@
+  * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: tahoma, sans-serif;
+  }
+
+  :root {
+      --main-bg-color: #003366;
+      --main-color: #ffffff;
+      --global-palette1: #3182CE;
+      --global-palette2: #2B6CB0;
+      --global-palette3: #1A202C;
+      --global-palette4: #2D3748;
+      --global-palette5: #4A5568;
+      --global-palette6: #718096;
+      --global-palette7: #EDF2F7;
+      --global-palette8: #F7FAFC;
+      --global-palette9: #ffffff;
+      --global-hover: #ff4500;
+
+  }
+
+  .main-color {
+      color: #003366;
+  }
+
+  .main-bg-color {
+      background-color: #003366;
+  }
+
+  body {
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%) !important;
+  }
+
+  .hero {
+      /* width: 100vw; */
+      margin-top: 10px;
+      position: relative;
+      height: 50vh;
+  }
+
+  .hero img {
+      object-fit: cover;
+  }
+
+  .blog-hero-box {
+      position: absolute;
+      top: 30%;
+      left: 37%;
+      z-index: 1;
+      background-color: var(--main-color);
+      color: var(--global-palette3);
+      width: 20%;
+      height: 40%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid black;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 25px;
+  }
+
+  .blog-main-div{
+    margin-top: 20px;
+    border-radius: 4px;
+    background-color: var(--main-color);
+    padding:20px 10px ;
+  }
+
+  .blog-main-div p {
+      padding: 10px;
+      letter-spacing: .5px;
+      font-size: 18px;
+      text-align: justify;
+  }
+
+  /* Top navbar */
+  .blog-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin: 20px;
+  }
+
+  .blog-categories {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+  }
+
+  .blog-categories span {
+      cursor: pointer;
+      font-size: 16px;
+      text-transform: capitalize;
+      color: var(--main-bg-color);
+  }
+
+  .blog-categories .active {
+      color: orangered;
+      font-weight: bold;
+  }
+
+  /* Search */
+  .search-area {
+      position: relative;
+  }
+
+  .search-icon {
+      font-size: 18px;
+      cursor: pointer;
+      color: #333;
+  }
+
+  .search-box {
+      display: none;
+      position: absolute;
+      top: -20px;
+      right: 0;
+      background: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      z-index: 100;
+  }
+
+  .search-box input {
+      border: none;
+      outline: none;
+      padding: 5px;
+      width: 160px;
+  }
+
+  .search-box .close-icon {
+      color: red;
+      cursor: pointer;
+      font-size: 16px;
+  }
+
+  /* Cards */
+  .card-container {
+      width: 100% !important;
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+      flex-wrap: wrap;
+  }
+
+
+
+  .card {
+      width: 320px;
+      background-color: #fff;
+      box-shadow: 0 0 5px rgb(255, 255, 255);
+      overflow: hidden;
+      transition: box-shadow 0.3s ease;
+      margin-top: 10px;
+  }
+
+  .card:hover {
+      box-shadow: 0 6px 20px rgba(212, 211, 211, 0.363);
+  }
+
+  .card img {
+      width: 100%;
+      height: 200px;
+      object-fit:cover;
+  }
+
+  .card-body {
+      padding: 1rem;
+  }
+
+  .card-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: #888;
+      margin-bottom: 0.5rem;
+  }
+
+  .tag {
+      color: orangered;
+      font-size: 0.85rem;
+      text-transform: lowercase;
+      margin-bottom: 0.5rem;
+  }
+
+  .title {
+      font-weight: 600;
+      font-size: 1rem;
+      color: #222;
+      margin-bottom: 0.5rem;
+  }
+
+  .desc {
+      font-size: 0.9rem;
+      color: #555;
+      margin-bottom: 0.5rem;
+  }
+
+  .title:hover,
+  .desc:hover {
+      color: orangered;
+  }
+
+  .card-footer {
+      padding: 0.5rem 1rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid #eee;
+      font-size: 0.9rem;
+      color: #777;
+  }
+
+  .card-footer i {
+      margin-right: 4px;
+  }
+
+  .interactions {
+      display: flex;
+      gap: 10px;
+  }
+
+  .interactions i {
+      color: #999;
+      cursor: pointer;
+      transition: color 0.3s;
+  }
+
+  .interactions i:hover {
+      color: orangered;
+  }
+
+  @media (max-width: 576px) {
+      .search-box input {
+          width: 120px;
+      }
+  }
